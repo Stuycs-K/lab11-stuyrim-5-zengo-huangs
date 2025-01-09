@@ -25,5 +25,5 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Name | Health | Normal Attack | Special Resource | Support | Special Attack |
 | :----- | :----- | :----- | :----- | :-----| :-----|
 | Werewolf  | 30      | 2-4 damage | fur | Increase damage of allies by 50% for a turn | tbd| 
-| Vampire  | 20      | 3-6 damage |
-| Zombie   | 25      | 2-7 damage |
+| Vampire  | 20      | 3-6 damage | blood | Increase max hp of allies by 25% | tbd |
+| Zombie   | 25      | 2-7 damage | brain | Increase special resource + max by one | tbd |
