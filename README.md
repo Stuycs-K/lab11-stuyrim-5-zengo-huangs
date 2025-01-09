@@ -22,8 +22,8 @@ Make a clear list of features that work/dont work
 replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
 
 
-| Name | Health | Normal Attack | Special Attack | Support | Special Attack |
+| Name | Health | Normal Attack | Special Resource | Support | Special Attack |
 | :----- | :----- | :----- | :----- | :-----| :-----|
-| React.js  | Node.js      | MySQL       |
-| Next.js   | Express      | MongoDB     |
-| Vue.js    | Nest.js      | Redis       |
+| Werewolf  | 30      | 2-4 damage | fur | Increase damage of allies by 50% for a turn | tbd| 
+| Vampire  | 20      | 3-6 damage |
+| Zombie   | 25      | 2-7 damage |
