@@ -16,7 +16,14 @@ Make a clear list of features that work/dont work
 :beetle: This is a bug that affects the game.
 
 
+
 ## Adventurer Subclasses
 
 replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
 
+
+| Name | Health | Normal Attack | Special Attack | Support | Special Attack |
+| :----- | :----- | :----- | :----- | :-----| :-----|
+| React.js             | Node.js      | MySQL       |
+| Next.js              | Express      | MongoDB     |
+| Vue.js               | Nest.js      | Redis       |
