@@ -19,11 +19,10 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
-replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
-
+Will probably be changing names latter 
 
 | Name | Health | Normal Attack | Special Resource | Support | Special Attack |
 | :----- | :----- | :----- | :----- | :-----| :-----|
-| Werewolf  | 30      | 2-4 damage | fur | Increase damage of allies by 50% for a turn | tbd| 
-| Vampire  | 20      | 3-6 damage | blood | Increase max hp of allies by 25% | tbd |
-| Zombie   | 25      | 2-7 damage | brain | Increase special resource + max by one | tbd |
+| Werewolf  | 30      | 2-4 damage | Rage | Increase damage of allies by 50% for a turn | tbd| 
+| Vampire  | 20      | 3-6 damage | Blood | Increase max hp of allies by 25%, heals same amount | tbd |
+| Zombie   | 25      | 2-7 damage | Brains | Increase special resource + max by one | tbd |

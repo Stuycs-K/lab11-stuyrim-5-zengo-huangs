@@ -1,11 +1,11 @@
 public class Werewolf extends Adventurer {
-    int fur, furMax;
+    int rage, rageMax;
 
     // Constructors
     public Werewolf(String name, int hp) {
         super(name, hp);
-        furMax = 10;
-        fur = furMax / 2;
+        rageMax = 10;
+        rage = rageMax / 2;
     }
 
     public Werewolf(String name) {
@@ -18,19 +18,19 @@ public class Werewolf extends Adventurer {
 
     // Abstract method implementations
     public String getSpecialName() {
-        return "fur";
+        return "rage";
     }
 
     public int getSpecial() {
-        return fur;
+        return rage;
     }
 
     public void setSpecial(int n) {
-        fur = n;
+        rage = n;
     }
 
     public int getSpecialMax() {
-        return furMax;
+        return rageMax;
     }
 
     public String attack(Adventurer other) {
@@ -48,7 +48,7 @@ public class Werewolf extends Adventurer {
         return this + " howls" + other + ". Their damage will be increased by 50% for the next turn!";
     }
 
-    // Self-support: Restores 5 fur and 2 HP
+    // Self-support: Restores 5 rage and 2 HP
     public String support() {
         int hp = 2;
         setHP(getHP() + hp);
