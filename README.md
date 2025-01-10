@@ -25,4 +25,4 @@ Will probably be changing names latter
 | :----- | :----- | :----- | :----- | :-----| :-----|
 | Werewolf  | 30      | 2-4 damage | Rage | Increase damage of allies by 50% for a turn | tbd| 
 | Vampire  | 20      | 3-6 damage | Blood | Increase max hp of allies by 25%, heals same amount | tbd |
-| Zombie   | 25      | 2-7 damage | Brains | Increase special resource + max by one | tbd |
+| Zombie   | 25      | 2-7 damage | Brains | Increase special resource one | tbd |

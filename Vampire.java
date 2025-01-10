@@ -16,7 +16,7 @@ public class Vampire extends Adventurer{
         this("Vlad");
     }
 
-    public String getSpecialString(){
+    public String getSpecialName(){
         return "blood";
     }
     public int getSpecial(){
