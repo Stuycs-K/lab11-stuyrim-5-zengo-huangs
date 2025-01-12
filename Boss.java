@@ -62,5 +62,46 @@ public class Boss extends Adventurer {
         return this + " supports themself and heals for " + healing + " HP.";
     }
 
+    public String attack(ArrayList<Adventurer> others, int targetIndex) {
+        if (targetIndex < 0 || targetIndex >= others.size()) {
+            return "Invalid target!";
+        }
+        Adventurer target = others.get(targetIndex);
+        return attack(target);
+    }
 
+    public String specialAttack(ArrayList<Adventurer> others, int targetIndex) {
+        if (targetIndex < 0 || targetIndex >= others.size()) {
+            return "Invalid target!";
+        }
+        Adventurer target = others.get(targetIndex);
+        return specialAttack(target);
+    }
+
+    public String support(ArrayList<Adventurer> others, int targetIndex) {
+        if (targetIndex < 0 || targetIndex >= others.size()) {
+            return "Invalid target!";
+        }
+        Adventurer target = others.get(targetIndex);
+        return support(target);
+    }
+
+    public String attack(ArrayList<Adventurer> others) {
+        int targetIndex = random.nextInt(others.size());
+        return attack(others.get(targetIndex));
+    }
+
+    public String specialAttack(ArrayList<Adventurer> others) {
+        int targetIndex = random.nextInt(others.size());
+        return specialAttack(others.get(targetIndex));
+    }
+
+    public String support(ArrayList<Adventurer> others) {
+        int targetIndex = random.nextInt(others.size());
+        return support(others.get(targetIndex));
+    }
+
+    public String toString() {
+        return this.getName();
+    }
 }
