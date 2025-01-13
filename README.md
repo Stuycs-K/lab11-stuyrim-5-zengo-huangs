@@ -19,10 +19,10 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
-Will probably be changing names latter 
+Will probably be changing names latter
 
 | Name | Health | Normal Attack | Special Resource | Support | Special Attack |
 | :----- | :----- | :----- | :----- | :-----| :-----|
-| Werewolf  | 30      | 2-4 damage | Rage | Increase damage of allies by 50% for a turn | tbd| 
-| Vampire  | 20      | 3-6 damage | Blood | Increase max hp of allies by 25%, heals same amount | tbd |
-| Zombie   | 25      | 2-7 damage | Brains | Increase special resource one | tbd |
+| Werewolf  | 30      | 2-4 damage | Rage | Increase damage of allies by 50% for a turn | Howls : reduce damage of enemies by 75% for a turn|
+| Vampire  | 20      | 3-6 damage | Blood | Increase max hp of allies by 25%, heals same amount | Bites : reduce max hp of enemies by 5|
+| Zombie   | 25      | 2-7 damage | Brains | Increase special resource one | Bonespear : reduce enemies' special by 50% |
