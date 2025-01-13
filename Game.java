@@ -12,19 +12,24 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    for (int i = 0; i < 80; i++) {
+    for (int i = 1; i < 80; i++) {
       Text.go(1, i + 1);
       Text.colorize("-",Text.RED, Text.BRIGHT);
+      System.out.println("-");
     }
-    for (int i = 0; i < 80; i++) {
+    for (int i = 1; i < 80; i++) {
       Text.go(30, i + 1);
-      Text.colorize("-", Text.RED, Text.BRIGHT);
+      Text.colorize("|", Text.RED, Text.BRIGHT);
+      System.out.println("-");
+
     }
     for (int i = 1; i < 30; i++) {
       Text.go(i + 1, 1);
-      Text.colorize("-", Text.RED, Text.BRIGHT);
+      Text.colorize("|", Text.RED, Text.BRIGHT);
       Text.go(i + 1, 80);
       Text.colorize("-",Text.RED, Text.BRIGHT);
+      System.out.println("|");
+
     }
   }
 
