@@ -16,13 +16,13 @@ public class Game{
     Text.clear();
     for (int i = 0; i < WIDTH; i++) {
       Text.go(1, i);
-      Text.colorize("-",Text.RED, Text.BRIGHT);
-      System.out.print("-");
+      Text.colorize("—",Text.RED, Text.BRIGHT);
+      System.out.print("—");
     }
     for (int i = 0; i < WIDTH; i++) {
       Text.go(30, i +1);
       Text.colorize("|", Text.RED, Text.BRIGHT);
-      System.out.print("-");
+      System.out.print("—");
 
     }
     for (int i = 0; i < HEIGHT; i++) {
@@ -120,9 +120,17 @@ public class Game{
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
+    if (hp * 1.0 / maxHP < 0.25) {
+      return Text.colorize(output, Text.RED, Text.BRIGHT);
+    }
+    else if (hp * 1.0 / maxHP < 0.75) {
+      return Text.colorize(output, Text.YELLOW, Text.BRIGHT);
+    }
     // under 75% : yellow
     // otherwise : white
-    return output;
+    else {
+      return output;
+    }
   }
 
 
@@ -144,13 +152,13 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-
       //show cursor
+      Text.showCursor();
 
       String input = in.nextLine();
 
       //clear the text that was written
-
+      Text.clear();
       return input;
   }
 
