@@ -16,13 +16,13 @@ public class Game{
     Text.clear();
     for (int i = 0; i < WIDTH; i++) {
       Text.go(1, i);
-      Text.colorize("-",Text.RED, Text.BRIGHT);
-      System.out.print("-");
+      Text.colorize("—",Text.RED, Text.BRIGHT);
+      System.out.print("—");
     }
     for (int i = 0; i < WIDTH; i++) {
       Text.go(30, i +1);
       Text.colorize("|", Text.RED, Text.BRIGHT);
-      System.out.print("-");
+      System.out.print("—");
 
     }
     for (int i = 0; i < HEIGHT; i++) {
