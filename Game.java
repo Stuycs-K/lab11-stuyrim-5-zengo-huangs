@@ -60,6 +60,29 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    String[] lines = text.split("(?<=\\G.{" + width + "})");
+
+
+    for(int i = 0; i < height; i++){
+      Text.go(row+i, col);
+      for(int j =0; j < width; j++){
+        System.out.print(" ");
+      }
+    }
+    Text.go(row,col);
+    if(text.length() <= width){
+      drawText(text, row,col);
+    }
+    else{
+      for(int i = 0; i < lines.length; i++){
+        if(i == height){
+          break;
+        }
+        Text.go(row+i,col);
+        System.out.print(lines[i]);
+      }
+    }
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -69,6 +92,9 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
+
+      int num = (int)(Math.random()* 4);
+
       return new CodeWarrior("Bob"+(int)(Math.random()*100));
     }
 
