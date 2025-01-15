@@ -95,8 +95,54 @@ public class Game{
 
       int num = (int)(Math.random()* 4);
 
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      if(num == 0){
+        return new Vampire();
+      }
+      if(num == 1){
+        return new Zombie();
+      }
+      if(num == 2){
+        return new Werewolf();
+      }
+      return new Boss("big guy");
+
     }
+
+    public static Adventurer createRandomAdventurer(String name){
+
+      int num = (int)(Math.random()* 4);
+
+      if(num == 0){
+        return new Vampire(name);
+      }
+      if(num == 1){
+        return new Zombie(name);
+      }
+      if(num == 2){
+        return new Werewolf(name);
+      }
+      return new Boss(name);
+
+    }
+
+    public static Adventurer createRandomAdventurer(String name, int hp){
+
+      int num = (int)(Math.random()* 4);
+
+      if(num == 0){
+        return new Vampire(name, hp);
+      }
+      if(num == 1){
+        return new Zombie(name,hp );
+      }
+      if(num == 2){
+        return new Werewolf(name, hp);
+      }
+      return new Boss(name, hp);
+
+    }
+
+
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
     *Should include Name HP and Special on 3 separate lines.
