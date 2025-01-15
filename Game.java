@@ -87,8 +87,6 @@ public class Game{
   }
 
 
-
-
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
@@ -142,8 +140,6 @@ public class Game{
 
     }
 
-
-
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
     *Should include Name HP and Special on 3 separate lines.
     *Note there is one blank row reserved for your use if you choose.
@@ -188,10 +184,6 @@ public class Game{
     }
   }
 
-
-
-
-
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
@@ -203,7 +195,11 @@ public class Game{
     drawParty(party, 2);
 
     //draw enemy party
+<<<<<<< HEAD
     drawParty(enemies, 8);
+=======
+    drawParty(enemies, 6);
+>>>>>>> 08153a67e4101258363223be68652b27feec0c5b
 
   }
 
@@ -277,6 +273,7 @@ public class Game{
         if(input.equals("attack") || input.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          (party.get(whichPlayer)).(attack(enemies.get(whichOpponent)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
@@ -289,6 +286,7 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          (party.get(whichPlayer)).(support());
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
