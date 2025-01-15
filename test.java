@@ -8,10 +8,11 @@ public class test {
 
         alliedParty.add(new Zombie());
         alliedParty.add(Game.createRandomAdventurer());
+        enemyParty.add(Game.createRandomAdventurer());
 
         Text.hideCursor();
         Game.drawBackground();
-        Game.drawParty(alliedParty, 2);
+        Game.drawScreen(alliedParty, enemyParty);
         Text.go(31,1);
 
     }
