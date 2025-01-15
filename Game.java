@@ -157,6 +157,15 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+
+      for(int i = 0; i < party.size() ; i++){
+        TextBox(startRow,  2 + (15*i), 15, 2, party.get(i).toString());
+        TextBox(startRow + 1,  2 + (15*i), 15, 2, "HP: " + party.get(i).getHP());
+        TextBox(startRow + 2 ,  2 + (15*i), 15, 2, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        TextBox(startRow + 3,  2 + (15*i), 15, 2, " ");
+
+      }
+
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
@@ -191,8 +200,10 @@ public class Game{
     drawBackground();
 
     //draw player party
+    drawParty(party, 2);
 
     //draw enemy party
+    drawParty(enemies, 8);
 
   }
 

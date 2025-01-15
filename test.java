@@ -1,9 +1,18 @@
+import java.util.ArrayList;
+
 public class test {
 
     public static void main(String[] args) {
+        ArrayList<Adventurer>  alliedParty = new ArrayList<Adventurer>();
+        ArrayList<Adventurer>  enemyParty = new ArrayList<Adventurer>();
+
+        alliedParty.add(new Zombie());
+        alliedParty.add(Game.createRandomAdventurer());
+
         Text.hideCursor();
         Game.drawBackground();
-        Game.TextBox(2,2,10,10, "goobwrysrettttttttttttttttttttttttttttttttttttttttttttttttttgfdsgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggt");
+        Game.drawParty(alliedParty, 2);
         Text.go(31,1);
+
     }
 }
