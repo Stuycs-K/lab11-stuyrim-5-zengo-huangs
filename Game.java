@@ -99,10 +99,7 @@ public class Game{
       if(num == 1){
         return new Zombie();
       }
-      if(num == 2){
         return new Werewolf();
-      }
-      return new Boss("big guy");
 
     }
 
@@ -116,10 +113,7 @@ public class Game{
       if(num == 1){
         return new Zombie(name);
       }
-      if(num == 2){
         return new Werewolf(name);
-      }
-      return new Boss(name);
 
     }
 
@@ -133,10 +127,7 @@ public class Game{
       if(num == 1){
         return new Zombie(name,hp );
       }
-      if(num == 2){
         return new Werewolf(name, hp);
-      }
-      return new Boss(name, hp);
 
     }
 
@@ -197,6 +188,8 @@ public class Game{
     //draw enemy party
     drawParty(enemies, 8);
 
+
+
   }
 
   public static String userInput(Scanner in){
@@ -236,8 +229,12 @@ public class Game{
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
+    party.add(createRandomAdventurer());
+    party.add(createRandomAdventurer("joe"));
+    party.add(createRandomAdventurer("john", 40));
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+
   
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
@@ -250,7 +247,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies); //initial state.
 
     //Main loop
 
@@ -268,13 +265,13 @@ public class Game{
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          (party.get(whichPlayer)).(attack(enemies.get(whichOpponent)));
+          (party.get(whichPlayer)).attack(enemies.get(whichOpponent));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -284,7 +281,7 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          (party.get(whichPlayer)).(support());
+          (party.get(whichPlayer)).support();
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -338,7 +335,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies);
 
 
     }//end of main game loop
