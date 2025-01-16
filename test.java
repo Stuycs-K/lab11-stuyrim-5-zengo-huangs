@@ -15,5 +15,7 @@ public class test {
         Game.drawScreen(alliedParty, enemyParty);
         Text.go(31,1);
 
+        
+
     }
 }
