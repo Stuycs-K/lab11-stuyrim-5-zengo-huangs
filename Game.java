@@ -275,6 +275,7 @@ public class Game{
         else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -282,7 +283,22 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          (party.get(whichPlayer)).support();
+          try {
+            int index = Integer.parseInt(input.split(" ")[1]);
+            if (index >= 0 && index < party.size()) {
+              party.get(whichPlayer).support(party.get(index));
+            } 
+            else {
+              TextBox(20, 2, WIDTH - 1, 1, "Invalid target index for support.");
+            }
+          } 
+          catch (NumberFormatException e) {
+            TextBox(20, 2, WIDTH - 1, 1, "Invalid input format for support.");
+          }
+          else {
+            TextBox(20, 2, WIDTH - 1, 1, "Invalid command. Try attack/special/support.");
+            whichPlayer--;
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
