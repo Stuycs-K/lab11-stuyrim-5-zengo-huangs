@@ -258,6 +258,26 @@ public class Game{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
+      boolean allEnemiesDefeated = true;
+        for (int i = 0; i < enemies.size(); i++) {
+          if (enemies.get(i).getHP() > 0) {
+            allEnemiesDefeated = false;
+          }
+        }
+        if (allEnemiesDefeated) {
+          TextBox(22, 2, WIDTH - 1, 1, "You win! All enemies are defeated.");
+          quit();
+        }
+        boolean allPartyDefeated = true;
+        for (int i = 0; i < party.size(); i++) {
+          if (party.get(i).getHP() > 0) {
+            allPartyDefeated = false;
+          }
+        }
+        if (allPartyDefeated) {
+          TextBox(22, 2, WIDTH - 1, 1, "You lose! All party members are defeated.");
+          quit();
+        }
 
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
