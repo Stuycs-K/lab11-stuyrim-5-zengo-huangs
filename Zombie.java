@@ -50,6 +50,14 @@ public class Zombie extends Adventurer{
     }
 
     public String specialAttack(Adventurer other){
-        return this.getName() + " attempted to perform a special attack.";
+        if (this.brain >= 3) {
+            this.brain -= 3;
+            int specialReduction = other.getSpecial() / 2;
+            other.setSpecial(other.getSpecial() - specialReduction);
+            return this.getName() + " unleashed a Bonespear at " + other.getName() + ", reducing their " + other.getSpecialName() + " by 50%";
+        } 
+        else {
+            return this.getName() + " tried to use Bonespear, but didn't have enough brains";
+        }
     }
 }
