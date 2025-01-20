@@ -314,13 +314,22 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
+        Adventurer enemy = enemies.get(whichOpponent);
+        Adventurer target = party.get((int)(Math.random() * party.size()));
+        if (Math.random() < 0.5) {
+          enemy.attack(target);
+        } 
+        else {
+          enemy.specialAttack(target);
+        }
+        whichOpponent++;
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
 
-        whichOpponent++;
+
 
       }//end of one enemy.
 
