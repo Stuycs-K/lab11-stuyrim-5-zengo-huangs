@@ -295,12 +295,12 @@ public class Game{
           catch (NumberFormatException e) {
             TextBox(20, 2, WIDTH - 1, 1, "Invalid input format for support.");
           }
+        }
           else {
             TextBox(20, 2, WIDTH - 1, 1, "Invalid command. Try attack/special/support.");
             whichPlayer--;
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
 
         //You should decide when you want to re-ask for user input
         //If no errors:
