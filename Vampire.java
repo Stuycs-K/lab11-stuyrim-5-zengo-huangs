@@ -53,7 +53,17 @@ public class Vampire extends Adventurer{
     }
 
     public String specialAttack(Adventurer other){
-        return this.getName() + "attempted a special attack " ;
+        int damage = 5;
+        if (other.getmaxHP() > damage) {
+            other.setmaxHP(other.getmaxHP() - damage); 
+            if (other.getHP() > other.getmaxHP()) {
+                other.setHP(other.getmaxHP());
+            }
+            return this.getName() + " bit " + other.getName() + ", reducing their max HP by " + damage + "!";
+        } 
+        else {
+            return this.getName() + " tried to bite " + other.getName() + ", but their max HP is too low";
+        }
     }
 
 
