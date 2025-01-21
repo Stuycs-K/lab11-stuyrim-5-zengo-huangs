@@ -30,7 +30,8 @@ public class Vampire extends Adventurer{
         this.bloodMax = bloodAmount;
     }
     public String attack(Adventurer other){
-        int damage = ((int) (4 * Math.random() + 3));
+        double damage = ((int) (4 * Math.random() + 3));
+        damage = damage * this.getDamageMultiplier();
         other.applyDamage((int)(damage * this.getDamageMultiplier()));
         return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage + " damage"; 
     }
@@ -53,9 +54,11 @@ public class Vampire extends Adventurer{
     }
 
     public String specialAttack(Adventurer other){
-        int damage = 5;
+        double damage = 5;
+        damage = damage * this.getDamageMultiplier();
+        
         if (other.getmaxHP() > damage) {
-            other.setmaxHP(other.getmaxHP() - damage); 
+            other.setmaxHP((int) (other.getmaxHP() - damage)); 
             if (other.getHP() > other.getmaxHP()) {
                 other.setHP(other.getmaxHP());
             }

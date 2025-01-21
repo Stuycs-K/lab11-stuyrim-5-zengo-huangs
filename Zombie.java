@@ -33,7 +33,8 @@ public class Zombie extends Adventurer{
     }
 
     public String attack(Adventurer other){
-        int damage = (int) (6 * Math.random()) + 2;
+        double damage = (int) (6 * Math.random()) + 2;
+        damage = damage * this.getDamageMultiplier();
         other.applyDamage((int)(damage * this.getDamageMultiplier()));
 
         return this.getName() + " bit " + other.getName() + " and inflicted " + damage + " damage";

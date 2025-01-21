@@ -38,11 +38,11 @@ public class Game{
     }
 
     for(int i = 16; i < 30; i++){
-      Text.go(i, 40);
+      Text.go(i, 50);
       System.out.print(Text.colorize("|", Text.CYAN, Text.BRIGHT));
     }
 
-    for(int i = 2; i < 40; i++){
+    for(int i = 2; i < 50; i++){
       Text.go(17, i);
       System.out.println(Text.colorize("—" , Text.GREEN, Text.BRIGHT));
     }
@@ -206,7 +206,7 @@ public class Game{
     //draw enemy party
     drawParty(enemies, 10);
 
-    TextBox( 16, 41, 39, 3, previousAction);
+    TextBox( 16, 51, 29, 3, previousAction);
 
 
     if(partyTurn){
@@ -315,7 +315,7 @@ public class Game{
           previous = "You win! All enemies are defeated.";
           drawScreen(party,enemies,previous, whichPlayer, partyTurn);
           quit();
-          
+
           return;
         }
         allPartyDefeated = true;
@@ -490,7 +490,7 @@ public class Game{
 
     }//end of main game loop
     // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-    TextBox(16, 41, 39, 10, "You have quit the game.");
+    TextBox(16, 51, 29, 10, "You have quit the game.");
 
     //After quit reset things:
     quit();
