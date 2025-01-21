@@ -482,7 +482,7 @@ public class Game{
 
     }//end of main game loop
     // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-
+    TextBox(16, 41, 39, 10, "You have quit the game.");
 
     //After quit reset things:
     quit();
