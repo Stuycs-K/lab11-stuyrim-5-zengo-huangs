@@ -160,8 +160,8 @@ public class Game{
 
       for(int i = 0; i < party.size() ; i++){
         TextBox(startRow,  2 + (15*i), 15, 2, party.get(i).toString());
-        String coloredHP = colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP());
-        TextBox(startRow + 1,  2 + (15*i), 15, 2, "HP: " + party.get(i).getHP());
+        String coloredHP = "HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP());
+        TextBox(startRow + 1,  2 + (15*i), 15, 2, coloredHP);
         TextBox(startRow + 2 ,  2 + (15*i), 15, 2, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
         TextBox(startRow + 3,  2 + (15*i), 15, 2, " ");
 
