@@ -282,6 +282,12 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       
+      TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");
+      TextBox(18, 2, 35, 1, "a or attack to: Attack");
+      TextBox(19, 2, 35,  1, "su or support to: Support");
+      TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
+      TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
+
 
       //Read user input
       input = userInput(in);
@@ -297,7 +303,7 @@ public class Game{
         }
 
         if (allEnemiesDefeated) {
-          TextBox(22, 2, WIDTH - 1, 1, "You win! All enemies are defeated.");
+          previous = "You win! All enemies are defeated.";
           quit();
         }
         allPartyDefeated = true;
@@ -311,7 +317,7 @@ public class Game{
 
         }
         if (allPartyDefeated) {
-          TextBox(22, 2, WIDTH - 1, 1, "You lose! All party members are defeated.");
+          previous = "You lose! All party members are defeated.";
           quit();
         }
 
@@ -352,7 +358,7 @@ public class Game{
             previous = "Invalid input format for support.";
           }
         }
-          else {
+          else if(! input.equalsIgnoreCase("q") && input.equalsIgnoreCase("quit")){
             previous = "Invalid command. Try attack/special/support.";
             whichPlayer--;
           }
