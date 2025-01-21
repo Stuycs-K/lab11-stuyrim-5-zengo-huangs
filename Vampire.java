@@ -32,7 +32,7 @@ public class Vampire extends Adventurer{
     public String attack(Adventurer other){
         int damage = ((int) (4 * Math.random() + 3));
         other.applyDamage(damage);
-        return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage + "damage"; 
+        return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage + " damage"; 
     }
 
     public String support(Adventurer other){
