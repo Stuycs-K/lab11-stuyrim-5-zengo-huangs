@@ -34,7 +34,7 @@ public class Boss extends Adventurer {
 
     public String attack(Adventurer other) {
         int damage = random.nextInt(10) + 5; 
-        other.applyDamage(damage * damageMultiplier);
+        other.applyDamage((int)(damage * this.getDamageMultiplier()));
         return this + " attacks " + other + " and deals " + damage + " damage.";
     }
 
@@ -43,7 +43,7 @@ public class Boss extends Adventurer {
         if (power >= 10) {
             setSpecial(power - 10); 
             int damage = random.nextInt(20) + 10;
-            other.applyDamage(damage * damageMultiplier);
+            other.applyDamage((int)(damage * this.getDamageMultiplier()));
             return this + " uses their power to strike " + other + " for " + damage + " damage!";
         } else {
             return "Not enough power to use special attack. Instead, " + attack(other);
