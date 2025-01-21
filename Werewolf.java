@@ -35,7 +35,7 @@ public class Werewolf extends Adventurer {
 
     public String attack(Adventurer other) {
         int damage = (int) (Math.random() * 3) + 2;
-        other.applyDamage(damage);
+        other.applyDamage(damage * damageMultiplier);
         return this + " clawed " + other + " dealing " + damage + " damage.";
     }
 
@@ -52,7 +52,7 @@ public class Werewolf extends Adventurer {
 
     // Support: Increase damage of allies by 50% for a turn
     public String support(Adventurer other) {
-        return this + " howls" + other + ". Their damage will be increased by 50% for the next turn!";
+        return this + " howls at" + other + ". Their damage will be increased by 50% for the next turn!";
     }
 
     // Self-support: Restores 5 rage and 2 HP

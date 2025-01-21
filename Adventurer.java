@@ -3,6 +3,7 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private int bleeding;
+  private double damageMultiplier;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -27,6 +28,22 @@ public abstract class Adventurer{
     setSpecial(getSpecial()+n);
     return n;
   }
+
+  public void applyDamage(int amount){
+    if (this.HP < 0) {
+      this.HP = 0;
+    }
+    this.HP -= amount;
+  }
+
+  public void setDamageMultiplier(double damageMultiplier){
+    this.damageMultiplier = damageMultiplier;
+  }
+
+  public void getDamageMultiplier(){
+    return damageMultiplier;
+  }
+
 
   /*
   all adventurers must have a way to attack enemies and
@@ -53,15 +70,6 @@ public abstract class Adventurer{
   /*
   standard methods
   */
-
-  public void applyDamage(int amount){
-    this.HP -= amount;
-  }
-
-  private double damageMultiplier = 1.0;
-  public void reduceDamage(double percentage){
-    damageMultiplier = 1.0 - percentage;
-  }
 
   //You did it wrong if this happens.
   public Adventurer(){
