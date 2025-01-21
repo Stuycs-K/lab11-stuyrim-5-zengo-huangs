@@ -15,6 +15,11 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+Damage Multiplier :ballot_box_with_check:
+Special Attack :white_check_mark:
+Support :white_check_mark:
+Attack :white_check_mark:
+
 
 
 ## Adventurer Subclasses
