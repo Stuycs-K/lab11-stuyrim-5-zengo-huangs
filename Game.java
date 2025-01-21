@@ -258,9 +258,9 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    int num = (int)(Math.random() * 3.0);
+    int num = 1 + (int)(Math.random() * 3.0);
     for(int i =0; i < num; i++){
-      if(num == 0){
+      if(num == 1){
         enemies.add(new Boss("Big Guy"));
       }
       else{
@@ -274,8 +274,8 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    party.add(createRandomAdventurer());
-    party.add(createRandomAdventurer());
+    party.add(createRandomAdventurer("steve"));
+    party.add(createRandomAdventurer("alex", 30));
     party.add(createRandomAdventurer("john", 40));
   
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -313,8 +313,9 @@ public class Game{
         }
         if (allEnemiesDefeated) {
           previous = "You win! All enemies are defeated.";
-          quit();
           drawScreen(party,enemies,previous, whichPlayer, partyTurn);
+          quit();
+          
           return;
         }
         allPartyDefeated = true;
@@ -326,8 +327,8 @@ public class Game{
         }
         if (allPartyDefeated) {
           previous = "You lose! All party members are defeated.";
-          quit();
           drawScreen(party,enemies,previous, whichPlayer, partyTurn);
+          quit();
           return;
         } 
 
