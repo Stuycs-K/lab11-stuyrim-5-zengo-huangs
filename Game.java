@@ -196,7 +196,7 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies, String previousAction, int whichPlayer){
+  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies, String previousAction, int whichPlayer, boolean partyTurn){
 
     drawBackground();
 
@@ -208,11 +208,19 @@ public class Game{
 
     TextBox( 16, 41, 39, 3, previousAction);
 
-    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");  
+
+    if(partyTurn){
+      TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");  
+    }
+    else{
+      TextBox(16, 2, 35,1, "Enter anything for enemy action");  
+
+    }
     TextBox(18, 2, 35, 1, "a or attack to: Attack");
     TextBox(19, 2, 35,  1, "su or support to: Support");
-    TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
+    TextBox(20, 2, 36, 1, "sp or special to: use Special Attack");
     TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
+    TextBox(22, 2, 38, 1, "Enter number after to select target");
 
 
 
@@ -220,7 +228,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(16,28);
+      Text.go(16,34);
       //show cursor
       Text.showCursor();
 
@@ -251,6 +259,7 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     enemies.add(new Boss("big guy"));
+    enemies.add(createRandomAdventurer());
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -276,7 +285,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen(party, enemies, previous, whichPlayer); //initial state.
+    drawScreen(party, enemies, previous, whichPlayer, partyTurn); //initial state.
 
     //Main loop
 
@@ -298,6 +307,7 @@ public class Game{
         if (allEnemiesDefeated) {
           previous = "You win! All enemies are defeated.";
           quit();
+          drawScreen(party,enemies,previous, whichPlayer, partyTurn);
           return;
         }
         allPartyDefeated = true;
@@ -310,24 +320,51 @@ public class Game{
         if (allPartyDefeated) {
           previous = "You lose! All party members are defeated.";
           quit();
+          drawScreen(party,enemies,previous, whichPlayer, partyTurn);
           return;
-        }
+        } 
 
 
       //display event based on last turn's input
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
+        if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          previous = party.get(whichPlayer).attack(enemies.get(whichOpponent));
+          try {
+            int index = Integer.parseInt(input.split(" ")[1]);
+            if (index >= 0 && index < enemies.size()) {
+              previous = party.get(whichPlayer).attack(enemies.get(index));
+            } 
+            else {
+              previous = "Invalid target index for attack.";
+              whichPlayer--;
+            }
+          } 
+          catch (ArrayIndexOutOfBoundsException e) {
+            previous = "Invalid input format for attack.";
+            whichPlayer--;
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
+        else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          previous = party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
+          try {
+            int index = Integer.parseInt(input.split(" ")[1]);
+            if (index >= 0 && index < enemies.size()) {
+              previous = party.get(whichPlayer).specialAttack(enemies.get(index));
+            } 
+            else {
+              previous = "Invalid target index for special attack .";
+              whichPlayer--;
+            }
+          } 
+          catch (ArrayIndexOutOfBoundsException e) {
+            previous = "Invalid input format for special attack.";
+            whichPlayer--;
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -342,33 +379,41 @@ public class Game{
             } 
             else {
               previous = "Invalid target index for support.";
+              whichPlayer--;
             }
           } 
-          catch (NumberFormatException e) {
+          catch (ArrayIndexOutOfBoundsException e) {
             previous = "Invalid input format for support.";
+            whichPlayer--;
           }
         }
-          else if(! input.equalsIgnoreCase("q") && input.equalsIgnoreCase("quit")){
-            previous = "Invalid command. Try attack/special/support.";
-            whichPlayer--;
+        else {
+          previous = "Invalid command. Try attack/special/support.";
+          whichPlayer--;
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
         //You should decide when you want to re-ask for user input
         //If no errors:
+        
         whichPlayer++;
+        try{
+          if(party.get(whichPlayer).getHP() <= 0){
+            whichPlayer++;
+          }
+        }catch(IndexOutOfBoundsException e){}
+
 
 
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          previous  = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
+          // previous  = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          previous = "press enter to see enemies's turn";
 
           partyTurn = false;
           whichOpponent = 0;
@@ -386,19 +431,24 @@ public class Game{
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
         Adventurer enemy = enemies.get(whichOpponent);
-        Adventurer target = party.get((int)(Math.random() * party.size()));
+        int adventurerToBeAttacked = (int)(Math.random() * party.size());
+        while(party.get(adventurerToBeAttacked).getHP() < 0){
+          adventurerToBeAttacked = (int)(Math.random() * party.size());
+        }
+        Adventurer target = party.get(adventurerToBeAttacked);
         if (Math.random() < 0.5) {
           previous = enemy.attack(target);
-        } 
+        }
         else {
           previous = enemy.specialAttack(target);
         }
         whichOpponent++;
+        try{
+          if(party.get(whichOpponent).getHP() <= 0){
+            whichOpponent++;
+          }
+        }catch(IndexOutOfBoundsException e){}
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
-
-        //Decide where to draw the following prompt:
-        String prompt = "press enter to see next turn";
 
 
 
@@ -416,8 +466,9 @@ public class Game{
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
       }
 
+
       //display the updated screen after input has been processed.
-      drawScreen(party, enemies, previous, whichPlayer);
+      drawScreen(party, enemies, previous, whichPlayer, partyTurn);
 
 
       // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
