@@ -162,6 +162,7 @@ public class Game{
         TextBox(startRow,  2 + (19*i), 19, 2, party.get(i).toString());
         String coloredHP = "HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP());
         TextBox(startRow + 1,  2 + (19*i), 19, 2, coloredHP);
+        Text.reset();        
         TextBox(startRow + 2 ,  2 + (19*i), 19, 2, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
         TextBox(startRow + 3,  2 + (19*i), 19, 2, " ");
 
@@ -179,10 +180,13 @@ public class Game{
     if (hp * 1.0 / maxHP < 0.25) {
       return Text.colorize(output, Text.RED, Text.BRIGHT);
     }
+
+    // under 75% : yellow
+
     else if (hp * 1.0 / maxHP < 0.75) {
       return Text.colorize(output, Text.YELLOW, Text.BRIGHT);
     }
-    // under 75% : yellow
+
     // otherwise : white
     else {
       return output;
@@ -192,7 +196,7 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies, String previousAction){
+  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies, String previousAction, int whichPlayer){
 
     drawBackground();
 
@@ -202,7 +206,15 @@ public class Game{
     //draw enemy party
     drawParty(enemies, 10);
 
-    TextBox(22, 45, 34, 3, previousAction);
+    TextBox( 16, 41, 39, 3, previousAction);
+
+    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");  
+    TextBox(18, 2, 35, 1, "a or attack to: Attack");
+    TextBox(19, 2, 35,  1, "su or support to: Support");
+    TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
+    TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
+
+
 
   }
 
@@ -264,31 +276,15 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen(party, enemies, previous); //initial state.
+    drawScreen(party, enemies, previous, whichPlayer); //initial state.
 
     //Main loop
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/support/special/quit";
 
-    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");
-    TextBox(18, 2, 35, 1, "a or attack to: Attack");
-    TextBox(19, 2, 35,  1, "su or support to: Support");
-    TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
-    TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
-
-
-
-
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       
-      TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");  
-      TextBox(18, 2, 35, 1, "a or attack to: Attack");
-      TextBox(19, 2, 35,  1, "su or support to: Support");
-      TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
-      TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
-
-
       //Read user input
       input = userInput(in);
 
@@ -366,13 +362,13 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          previous  = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          previous = "press enter to see enemies's turn";
 
           partyTurn = false;
           whichOpponent = 0;
@@ -421,7 +417,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen(party, enemies, previous);
+      drawScreen(party, enemies, previous, whichPlayer);
 
 
       // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
