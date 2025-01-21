@@ -258,8 +258,15 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    enemies.add(new Boss("big guy"));
-    enemies.add(createRandomAdventurer());
+    int num = (int)(Math.random() * 3.0);
+    for(int i =0; i < num; i++){
+      if(num == 0){
+        enemies.add(new Boss("Big Guy"));
+      }
+      else{
+        enemies.add(createRandomAdventurer());
+      }
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
