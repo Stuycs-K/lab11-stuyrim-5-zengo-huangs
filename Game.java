@@ -42,7 +42,10 @@ public class Game{
       System.out.print(Text.colorize("|", Text.CYAN, Text.BRIGHT));
     }
 
-    for(int i = 35)
+    for(int i = 2; i < 40; i++){
+      Text.go(17, i);
+      System.out.println(Text.colorize("—" , Text.GREEN, Text.BRIGHT));
+    }
 
   }
 
@@ -205,7 +208,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(17,2);
+      Text.go(16,28);
       //show cursor
       Text.showCursor();
 
@@ -268,7 +271,7 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/support/special/quit";
 
-    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer));
+    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");
     TextBox(18, 2, 35, 1, "a or attack to: Attack");
     TextBox(19, 2, 35,  1, "su or support to: Support");
     TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
