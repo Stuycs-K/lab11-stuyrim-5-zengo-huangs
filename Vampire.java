@@ -34,7 +34,7 @@ public class Vampire extends Adventurer{
         double damage = ((int) (4 * Math.random() + 3));
         damage = damage * this.getDamageMultiplier();
         other.applyDamage((int)(damage * this.getDamageMultiplier()));
-        return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage + " damage"; 
+        return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage * 2 + " damage"; 
     }
 
     public String support(Adventurer other){
@@ -63,7 +63,7 @@ public class Vampire extends Adventurer{
             if (other.getHP() > other.getmaxHP()) {
                 other.setHP(other.getmaxHP());
             }
-            return this.getName() + " bit " + other.getName() + ", reducing their max HP by " + damage + "!";
+            return this.getName() + " bit " + other.getName() + ", reducing their max HP by " + damage * 2+ "!";
         } 
         else {
             return this.getName() + " tried to bite " + other.getName() + ", but their max HP is too low";

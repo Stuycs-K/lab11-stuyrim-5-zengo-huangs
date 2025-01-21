@@ -34,10 +34,10 @@ public class Werewolf extends Adventurer {
     }
 
     public String attack(Adventurer other) {
-        double damage = (int) (Math.random() * 3) + 2;
+        double damage = (int) ((Math.random() * 3) + 2);
         damage = damage * this.getDamageMultiplier();
         other.applyDamage((int)(damage * this.getDamageMultiplier()));
-        return this + " clawed " + other + " dealing " + damage + " damage.";
+        return this + " clawed " + other + " dealing " + damage * 2 + " damage.";
     }
 
     public String specialAttack(Adventurer other) {

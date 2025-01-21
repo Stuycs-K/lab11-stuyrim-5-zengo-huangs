@@ -37,7 +37,7 @@ public class Zombie extends Adventurer{
         damage = damage * this.getDamageMultiplier();
         other.applyDamage((int)(damage * this.getDamageMultiplier()));
 
-        return this.getName() + " bit " + other.getName() + " and inflicted " + damage + " damage";
+        return this.getName() + " bit " + other.getName() + " and inflicted " + damage * 2 + " damage";
     }
 
     public String support(Adventurer other){
