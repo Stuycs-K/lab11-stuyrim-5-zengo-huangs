@@ -40,7 +40,14 @@ public class Werewolf extends Adventurer {
     }
 
     public String specialAttack(Adventurer other) {
-        return this + " attempted a special attack";
+        if (rage >= 3) {
+            rage -= 3;
+            other.reduceDamage(0.75);
+            return this.getName() + " howls ferociously, intimidating " + other.getName() + " and reducing their damage by 75% for the next turn";
+        } 
+        else {
+            return this.getName() + " tried to howl, but didn't have enough rage";
+        }
     }
 
     // Support: Increase damage of allies by 50% for a turn
