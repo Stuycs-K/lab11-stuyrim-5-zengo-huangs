@@ -35,14 +35,14 @@ public class Werewolf extends Adventurer {
 
     public String attack(Adventurer other) {
         int damage = (int) (Math.random() * 3) + 2;
-        other.applyDamage(damage * damageMultiplier);
+        other.applyDamage((int)(damage * this.getDamageMultiplier()));
         return this + " clawed " + other + " dealing " + damage + " damage.";
     }
 
     public String specialAttack(Adventurer other) {
         if (rage >= 3) {
             rage -= 3;
-            other.reduceDamage(0.75);
+            other.setDamageMultiplier(other.getDamageMultiplier() * .25);
             return this.getName() + " howls ferociously, intimidating " + other.getName() + " and reducing their damage by 75% for the next turn";
         } 
         else {

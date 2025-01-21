@@ -418,6 +418,9 @@ public class Game{
           partyTurn = false;
           whichOpponent = 0;
           whichPlayer = 0;
+          for(int i = 0; i < party.size(); i++){
+            party.get(i).setDamageMultiplier(1.0);
+          }
         }
         //done with one party member
 
@@ -462,6 +465,9 @@ public class Game{
         turn++;
         partyTurn=true;
         whichOpponent = 0;
+        for(int i = 0; i < enemies.size(); i++){
+          enemies.get(i).setDamageMultiplier(1.0);
+        }
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
       }

@@ -31,7 +31,7 @@ public class Vampire extends Adventurer{
     }
     public String attack(Adventurer other){
         int damage = ((int) (4 * Math.random() + 3));
-        other.applyDamage(damage * damageMultiplier);
+        other.applyDamage((int)(damage * this.getDamageMultiplier()));
         return this.getName() + " drained " + other.getName() + "'s blood and dealt " + damage + " damage"; 
     }
 
