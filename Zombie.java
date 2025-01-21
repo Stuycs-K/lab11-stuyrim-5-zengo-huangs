@@ -36,7 +36,7 @@ public class Zombie extends Adventurer{
         int damage = (int) (6 * Math.random()) + 2;
         other.applyDamage(damage);
 
-        return this.getName() + "bit " + other.getName() + " and inflicted " + damage + " damage";
+        return this.getName() + " bit " + other.getName() + " and inflicted " + damage + " damage";
     }
 
     public String support(Adventurer other){

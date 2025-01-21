@@ -16,23 +16,30 @@ public class Game{
     Text.clear();
     for (int i = 0; i < WIDTH; i++) {
       Text.go(1, i);
-      Text.colorize("—",Text.RED, Text.BRIGHT);
-      System.out.print("—");
-    }
-    for (int i = 0; i < WIDTH; i++) {
-      Text.go(30, i +1);
-      Text.colorize("|", Text.RED, Text.BRIGHT);
-      System.out.print("—");
+      System.out.print(Text.colorize("—",Text.RED, Text.BRIGHT));
 
+      Text.go(30, i +1);
+      System.out.print(Text.colorize("—", Text.RED, Text.BRIGHT));
+
+      Text.go(7, i);
+      System.out.print(Text.colorize("—", Text.CYAN, Text.BRIGHT));
+
+      Text.go(15, i);
+      System.out.print(Text.colorize("—", Text.CYAN, Text.BRIGHT));
     }
+
     for (int i = 0; i < HEIGHT; i++) {
       Text.go(i + 1, 0);
-      Text.colorize("|", Text.RED, Text.BRIGHT);
-      System.out.print("|");
-      Text.go(i + 1, 80);
-      Text.colorize("|",Text.RED, Text.BRIGHT);
-      System.out.print("|");
+      System.out.print(Text.colorize("|", Text.RED, Text.BRIGHT));
 
+      Text.go(i + 1, 80);
+      System.out.print(Text.colorize("|",Text.RED, Text.BRIGHT));
+
+    }
+
+    for(int i = 15; i < 29; i++){
+      Text.go(i, 40);
+      System.out.print(Text.colorize("|", Text.CYAN, Text.BRIGHT));
     }
   }
 
@@ -186,18 +193,15 @@ public class Game{
     drawParty(party, 2);
 
     //draw enemy party
-    drawParty(enemies, 8);
+    drawParty(enemies, 10);
 
-    TextBox(22, 8, WIDTH / 2, 3, previousAction);
-
-
-
+    TextBox(22, 40, 39, 3, previousAction);
 
   }
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(22,2);
+      Text.go(17,2);
       //show cursor
       Text.showCursor();
 
@@ -248,6 +252,8 @@ public class Game{
     String input = "";//blank to get into the main loop.
     Scanner in = new Scanner(System.in);
     String previous = "";
+    boolean allEnemiesDefeated;
+    boolean allPartyDefeated;
     //Draw the window border
 
     //You can add parameters to draw screen!
@@ -258,7 +264,14 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/support/special/quit";
 
-    TextBox(20, 2, WIDTH - 2,1, preprompt);
+    TextBox(16, 2, WIDTH  / 2,1, "Enter command for "+party.get(whichPlayer));
+    TextBox(17, 2, WIDTH/ 2, 1, "a or attack to: Attack");
+    TextBox(18, 2, WIDTH/ 2, 1, "su or support to: Support");
+    TextBox(19, 2, WIDTH/ 2, 1, "sp or special to: use Special Attack");
+    TextBox(20, 2, WIDTH/ 2, 1, "q or quit to: Leave the game");
+
+
+
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       
@@ -266,7 +279,7 @@ public class Game{
       //Read user input
       input = userInput(in);
 
-      boolean allEnemiesDefeated = true;
+      allEnemiesDefeated = true;
         for (int i = 0; i < enemies.size(); i++) {
           if (enemies.get(i).getHP() > 0) {
             allEnemiesDefeated = false;
@@ -280,7 +293,7 @@ public class Game{
           TextBox(22, 2, WIDTH - 1, 1, "You win! All enemies are defeated.");
           quit();
         }
-        boolean allPartyDefeated = true;
+        allPartyDefeated = true;
         for (int i = 0; i < party.size(); i++) {
           if (party.get(i).getHP() > 0) {
             allPartyDefeated = false;
