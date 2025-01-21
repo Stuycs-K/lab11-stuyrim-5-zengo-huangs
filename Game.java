@@ -296,29 +296,25 @@ public class Game{
         for (int i = 0; i < enemies.size(); i++) {
           if (enemies.get(i).getHP() > 0) {
             allEnemiesDefeated = false;
-          }
-          else{
-            allEnemiesDefeated = true;
+            break;
           }
         }
-
         if (allEnemiesDefeated) {
           previous = "You win! All enemies are defeated.";
           quit();
+          return;
         }
         allPartyDefeated = true;
         for (int i = 0; i < party.size(); i++) {
           if (party.get(i).getHP() > 0) {
             allPartyDefeated = false;
+            break;
           }
-          else{
-            allPartyDefeated = true;
-          }
-
         }
         if (allPartyDefeated) {
           previous = "You lose! All party members are defeated.";
           quit();
+          return;
         }
 
       //example debug statment
