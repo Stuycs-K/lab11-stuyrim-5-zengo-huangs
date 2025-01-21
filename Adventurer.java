@@ -16,6 +16,7 @@ public abstract class Adventurer{
   public abstract int getSpecial();
   public abstract int getSpecialMax();
   public abstract void setSpecial(int n);
+  public abstract boolean weakened();
 
   //concrete method written using abstract methods.
   //refill special resource by amount, but only up to at most getSpecialMax()
@@ -55,6 +56,11 @@ public abstract class Adventurer{
 
   public void applyDamage(int amount){
     this.HP -= amount;
+  }
+
+  private double damageMultiplier = 1.0;
+  public void reduceDamage(double percentage){
+    damageMultiplier = 1.0 - percentage;
   }
 
   //You did it wrong if this happens.
