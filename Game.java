@@ -41,6 +41,9 @@ public class Game{
       Text.go(i, 40);
       System.out.print(Text.colorize("|", Text.CYAN, Text.BRIGHT));
     }
+
+    for(int i = 35)
+
   }
 
   //Display a line of text starting at
@@ -195,7 +198,7 @@ public class Game{
     //draw enemy party
     drawParty(enemies, 10);
 
-    TextBox(22, 40, 39, 3, previousAction);
+    TextBox(22, 45, 34, 3, previousAction);
 
   }
 
@@ -265,10 +268,10 @@ public class Game{
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/support/special/quit";
 
     TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer));
-    TextBox(17, 2, 35, 1, "a or attack to: Attack");
-    TextBox(18, 2, 35,  1, "su or support to: Support");
-    TextBox(19, 2, 35, 1, "sp or special to: use Special Attack");
-    TextBox(20, 2, 35, 1, "q or quit to: Leave the game");
+    TextBox(18, 2, 35, 1, "a or attack to: Attack");
+    TextBox(19, 2, 35,  1, "su or support to: Support");
+    TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
+    TextBox(21, 2, 35, 1, "q or quit to: Leave the game");
 
 
 
