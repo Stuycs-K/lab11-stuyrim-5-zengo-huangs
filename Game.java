@@ -345,15 +345,15 @@ public class Game{
               previous = party.get(whichPlayer).support(party.get(index));
             } 
             else {
-              TextBox(20, 2, WIDTH - 1, 1, "Invalid target index for support.");
+              previous = "Invalid target index for support.";
             }
           } 
           catch (NumberFormatException e) {
-            TextBox(20, 2, WIDTH - 1, 1, "Invalid input format for support.");
+            previous = "Invalid input format for support.";
           }
         }
           else {
-            TextBox(20, 2, WIDTH - 1, 1, "Invalid command. Try attack/special/support.");
+            previous = "Invalid command. Try attack/special/support.";
             whichPlayer--;
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
