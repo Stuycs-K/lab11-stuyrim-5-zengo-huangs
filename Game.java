@@ -37,7 +37,7 @@ public class Game{
 
     }
 
-    for(int i = 15; i < 29; i++){
+    for(int i = 16; i < 30; i++){
       Text.go(i, 40);
       System.out.print(Text.colorize("|", Text.CYAN, Text.BRIGHT));
     }
@@ -264,11 +264,11 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/support/special/quit";
 
-    TextBox(16, 2, WIDTH  / 2,1, "Enter command for "+party.get(whichPlayer));
-    TextBox(17, 2, WIDTH/ 2, 1, "a or attack to: Attack");
-    TextBox(18, 2, WIDTH/ 2, 1, "su or support to: Support");
-    TextBox(19, 2, WIDTH/ 2, 1, "sp or special to: use Special Attack");
-    TextBox(20, 2, WIDTH/ 2, 1, "q or quit to: Leave the game");
+    TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer));
+    TextBox(17, 2, 35, 1, "a or attack to: Attack");
+    TextBox(18, 2, 35,  1, "su or support to: Support");
+    TextBox(19, 2, 35, 1, "sp or special to: use Special Attack");
+    TextBox(20, 2, 35, 1, "q or quit to: Leave the game");
 
 
 
