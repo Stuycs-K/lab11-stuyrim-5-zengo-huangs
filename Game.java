@@ -159,11 +159,11 @@ public class Game{
       //YOUR CODE HERE
 
       for(int i = 0; i < party.size() ; i++){
-        TextBox(startRow,  2 + (15*i), 15, 2, party.get(i).toString());
+        TextBox(startRow,  2 + (19*i), 19, 2, party.get(i).toString());
         String coloredHP = "HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP());
-        TextBox(startRow + 1,  2 + (15*i), 15, 2, coloredHP);
-        TextBox(startRow + 2 ,  2 + (15*i), 15, 2, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
-        TextBox(startRow + 3,  2 + (15*i), 15, 2, " ");
+        TextBox(startRow + 1,  2 + (19*i), 19, 2, coloredHP);
+        TextBox(startRow + 2 ,  2 + (19*i), 19, 2, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        TextBox(startRow + 3,  2 + (19*i), 19, 2, " ");
 
       }
 
@@ -282,7 +282,7 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       
-      TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");
+      TextBox(16, 2, 35,1, "Enter command for "+party.get(whichPlayer) + ":");  
       TextBox(18, 2, 35, 1, "a or attack to: Attack");
       TextBox(19, 2, 35,  1, "su or support to: Support");
       TextBox(20, 2, 35, 1, "sp or special to: use Special Attack");
@@ -317,8 +317,6 @@ public class Game{
           return;
         }
 
-      //example debug statment
-      TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
@@ -378,6 +376,7 @@ public class Game{
 
           partyTurn = false;
           whichOpponent = 0;
+          whichPlayer = 0;
         }
         //done with one party member
 
@@ -425,7 +424,11 @@ public class Game{
       drawScreen(party, enemies, previous);
 
 
+      // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+
+
     }//end of main game loop
+    // TextBox(24,2,78,10,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
 
     //After quit reset things:
