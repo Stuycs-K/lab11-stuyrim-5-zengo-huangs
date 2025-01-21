@@ -29,6 +29,7 @@ public abstract class Adventurer{
   }
 
   public void applyDamage(int amount){
+    this.HP -= amount;
     if (this.HP < 0) {
       this.HP = 0;
     }
@@ -73,16 +74,20 @@ public abstract class Adventurer{
   //You did it wrong if this happens.
   public Adventurer(){
     this("Lester-the-noArg-constructor-string");
+    this.damageMultiplier = 1.0;
   }
 
   public Adventurer(String name){
     this(name, 10);
+    this.damageMultiplier = 1.0;
+
   }
 
   public Adventurer(String name, int hp){
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
+    this.damageMultiplier = 1.0;
   }
 
   //toString method

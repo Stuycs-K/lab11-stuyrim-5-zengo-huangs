@@ -6,6 +6,7 @@ public class Vampire extends Adventurer{
         super(name,hp);
         this.blood = 6;
         this.bloodMax = this.blood / 2;
+        
     }
     public Vampire(String name){
         super(name, 20);
@@ -56,7 +57,7 @@ public class Vampire extends Adventurer{
     public String specialAttack(Adventurer other){
         double damage = 5;
         damage = damage * this.getDamageMultiplier();
-        
+
         if (other.getmaxHP() > damage) {
             other.setmaxHP((int) (other.getmaxHP() - damage)); 
             if (other.getHP() > other.getmaxHP()) {
